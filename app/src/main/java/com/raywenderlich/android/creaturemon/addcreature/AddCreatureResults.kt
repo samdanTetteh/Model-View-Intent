@@ -18,19 +18,19 @@ sealed class AddCreatureResults : MviResult {
     sealed class IntelligenceResult : AddCreatureResults() {
         object Processing : IntelligenceResult()
         data class Success(val intelligence : Int) : IntelligenceResult()
-        data class Failure(val error : Int) : IntelligenceResult()
+        data class Failure(val error : Throwable) : IntelligenceResult()
     }
 
     sealed class StrengthResult : AddCreatureResults() {
         object Processing : StrengthResult()
         data class Success(val strength : Int) : StrengthResult()
-        data class Failure(val error : Int) : StrengthResult()
+        data class Failure(val error : Throwable) : StrengthResult()
     }
 
     sealed class EnduranceResult : AddCreatureResults() {
         object Processing : EnduranceResult()
         data class Success(val endurance : Int) : EnduranceResult()
-        data class Failure(val error : Int) : EnduranceResult()
+        data class Failure(val error : Throwable) : EnduranceResult()
     }
 
     sealed class SaveCreatureResult : AddCreatureResults() {
