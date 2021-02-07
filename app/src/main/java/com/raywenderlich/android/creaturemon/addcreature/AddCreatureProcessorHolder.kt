@@ -114,6 +114,7 @@ class AddCreatureProcessorHolder (
                                     && action !is AddCreaturesActions.IntelligenceAction
                                     && action !is AddCreaturesActions.StrengthAction
                                     && action !is AddCreaturesActions.EnduranceAction
+                                    && action !is AddCreaturesActions.SaveAction
                     }. flatMap {
                         Observable.error<AddCreatureResults>(
                                 IllegalArgumentException("Unknown Action $it")
