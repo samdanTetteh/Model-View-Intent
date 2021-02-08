@@ -96,7 +96,7 @@ class AddCreatureProcessorHolder (
             }
 
 
-    internal val actionProcess =
+    internal val actionProcessor =
             ObservableTransformer<AddCreaturesActions, AddCreatureResults> { actions ->
                 actions.publish { shared ->
                     Observable.merge(

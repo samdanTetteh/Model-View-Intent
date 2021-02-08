@@ -1,25 +1,54 @@
 package com.raywenderlich.android.creaturemon.addcreature;
 
 import androidx.lifecycle.ViewModel
+import com.raywenderlich.android.creaturemon.allcreatures.AllCreaturesViewState
 import com.raywenderlich.android.creaturemon.data.model.CreatureAttributes
 import com.raywenderlich.android.creaturemon.data.model.CreatureGenerator
 import com.raywenderlich.android.creaturemon.mviBase.MviViewModel
 import io.reactivex.Observable
-import java.util.function.BiFunction
+import io.reactivex.functions.BiFunction
+import io.reactivex.subjects.PublishSubject
+
 
 class AddCreatureViewModel(
         private val addActionProcessorHolder: AddCreatureProcessorHolder
 ) : ViewModel(), MviViewModel<AddCreatureIntents, AddCreatureViewState> {
 
+    private val intentsSubject: PublishSubject<AddCreatureIntents> = PublishSubject.create()
+    private val stateObservable: Observable<AddCreatureViewState> = compose()
 
     override fun processIntent(intents: Observable<AddCreatureIntents>) {
-        TODO("Not yet implemented")
+        intents.subscribe(intentsSubject)
     }
 
-    override fun states(): Observable<AddCreatureViewState> {
-        TODO("Not yet implemented")
+    override fun states(): Observable<AddCreatureViewState> = stateObservable
+
+    private fun compose(): Observable<AddCreatureViewState> {
+        return intentsSubject
+                .map(this::actionFromIntent)
+                .compose(addActionProcessorHolder.actionProcessor)
+                .scan(AddCreatureViewState.default(), reducer)
+                .distinctUntilChanged()
+                .replay(1)
+                .autoConnect(0)
     }
 
+    private fun actionFromIntent(intents: AddCreatureIntents) : AddCreaturesActions {
+        return when (intents) {
+            is AddCreatureIntents.AvatarIntent -> AddCreaturesActions.AvatarAction(intents.drawable)
+            is AddCreatureIntents.NameIntent -> AddCreaturesActions.NameAction(intents.name)
+            is AddCreatureIntents.IntelligenceIntent -> AddCreaturesActions.IntelligenceAction(intents.intelligenceIndex)
+            is AddCreatureIntents.StrengthIntent -> AddCreaturesActions.StrengthAction(intents.strengthIndex)
+            is AddCreatureIntents.EnduranceIntent -> AddCreaturesActions.EnduranceAction(intents.enduranceIndex)
+            is AddCreatureIntents.SaveIntent -> AddCreaturesActions.SaveAction(
+                    intents.drawable,
+                    intents.name,
+                    intents.intelligenceIndex,
+                    intents.strengthIndex,
+                    intents.enduranceIndex
+            )
+        }
+    }
 
     companion object {
         private val generator = CreatureGenerator()
@@ -27,13 +56,12 @@ class AddCreatureViewModel(
 
         private val reducer = BiFunction { previousState: AddCreatureViewState, result: AddCreatureResults ->
             when (result) {
-                is AddCreatureResults.AvatarResult -> reduceAvator (previousState, result)
-                is AddCreatureResults.NameResult -> reduceName (previousState, result)
-                is AddCreatureResults.IntelligenceResult -> reduceIntelligence (previousState, result)
-                is AddCreatureResults.StrengthResult -> reduceStrength (previousState, result)
-                is AddCreatureResults.EnduranceResult -> reduceEndurance (previousState, result)
-                is AddCreatureResults.SaveCreatureResult -> reduceSave (previousState, result)
-             else -> {}
+                is AddCreatureResults.AvatarResult -> reduceAvator(previousState, result)
+                is AddCreatureResults.NameResult -> reduceName(previousState, result)
+                is AddCreatureResults.IntelligenceResult -> reduceIntelligence(previousState, result)
+                is AddCreatureResults.StrengthResult -> reduceStrength(previousState, result)
+                is AddCreatureResults.EnduranceResult -> reduceEndurance(previousState, result)
+                is AddCreatureResults.SaveCreatureResult -> reduceSave(previousState, result)
             }
         }
 
@@ -71,7 +99,7 @@ class AddCreatureViewModel(
             }
         }
 
-        private fun reduceIntelligence (
+        private fun reduceIntelligence(
                 previousState: AddCreatureViewState,
                 result: AddCreatureResults.IntelligenceResult
         ): AddCreatureViewState = when (result) {
