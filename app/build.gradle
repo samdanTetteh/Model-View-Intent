@@ -38,7 +38,7 @@ dependencies {
   kapt "androidx.room:room-compiler:$room_version"
 
   // Androidx
-  implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+  implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
 
   // RxJava and RxBinding
   implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"

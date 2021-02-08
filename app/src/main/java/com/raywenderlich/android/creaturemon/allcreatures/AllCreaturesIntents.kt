@@ -1,6 +1,8 @@
 package com.raywenderlich.android.creaturemon.allcreatures
 
-sealed class AllCreaturesIntents {
+import com.raywenderlich.android.creaturemon.mviBase.MviIntent
+
+sealed class AllCreaturesIntents : MviIntent {
     object LoadAllCreaturesIntent: AllCreaturesIntents()
     object ClearAllCreaturesIntent: AllCreaturesIntents()
 

@@ -1,6 +1,8 @@
 package com.raywenderlich.android.creaturemon.addcreature
 
-sealed class AddCreatureIntents {
+import com.raywenderlich.android.creaturemon.mviBase.MviIntent
+
+sealed class AddCreatureIntents : MviIntent {
     data class AvatarIntent(val drawable: Int) : AddCreatureIntents()
     data class NameIntent(val name: String) : AddCreatureIntents()
     data class IntelligenceIntent(val intelligenceIndex: Int) : AddCreatureIntents()
