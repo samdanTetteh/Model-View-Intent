@@ -38,12 +38,23 @@ import android.view.Menu
 import android.view.MenuItem
 import com.raywenderlich.android.creaturemon.R
 import com.raywenderlich.android.creaturemon.addcreature.CreatureActivity
+import com.raywenderlich.android.creaturemon.mviBase.MviView
+import com.raywenderlich.android.creaturemon.mviBase.MviViewState
+import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_all_creatures.*
 import kotlinx.android.synthetic.main.content_all_creatures.*
 
-class AllCreaturesActivity : AppCompatActivity() {
+class AllCreaturesActivity : AppCompatActivity(), MviView<AllCreaturesIntents, AllCreaturesViewState> {
 
   private val adapter = CreatureAdapter(mutableListOf())
+
+  private val clearAllCreaturesPublisher =
+          PublishSubject.create<AllCreaturesIntents.ClearAllCreaturesIntent>()
+
+
+  private val disposables = CompositeDisposable()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -72,4 +83,29 @@ class AllCreaturesActivity : AppCompatActivity() {
       else -> super.onOptionsItemSelected(item)
     }
   }
+
+  override fun intents(): Observable<AllCreaturesIntents> {
+    return Observable.merge(
+            loadIntent(),
+            clearIntent()
+    )
+  }
+
+  override fun render(state: MviViewState) {
+    TODO("Not yet implemented")
+  }
+
+  private fun loadIntent(): Observable<AllCreaturesIntents.LoadAllCreaturesIntent> {
+    return Observable.just(AllCreaturesIntents.LoadAllCreaturesIntent)
+  }
+
+  private fun clearIntent(): Observable<AllCreaturesIntents.ClearAllCreaturesIntent> {
+    return clearAllCreaturesPublisher
+  }
+
+
+  companion object {
+    private const val TAG = "AllCreaturesActivity"
+  }
+
 }
