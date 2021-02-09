@@ -71,7 +71,7 @@ class AddCreatureViewModel(
                 result: AddCreatureResults.AvatarResult
         ): AddCreatureViewState = when (result) {
             is AddCreatureResults.AvatarResult.Success -> {
-                previousState.copy(isProcessing = false, creature = generator.generateCreature(
+                previousState.copy(isProcessing = false, error = null, creature = generator.generateCreature(
                         previousState.creature.attributes, previousState.creature.name, result.drawable), isDrawableSelected = (result.drawable != 0))
             }
             is AddCreatureResults.AvatarResult.Processing -> {
@@ -157,7 +157,7 @@ class AddCreatureViewModel(
                 previousState.copy(isProcessing = false, isSaveComplete = true, error = null)
             }
             is AddCreatureResults.SaveCreatureResult.Failure -> {
-                previousState.copy(isSaveComplete = false, error = result.error)
+                previousState.copy(isProcessing = false, isSaveComplete = false, error = result.error)
             }
             is AddCreatureResults.SaveCreatureResult.Processing -> {
                 previousState.copy(isProcessing = true, error = null)

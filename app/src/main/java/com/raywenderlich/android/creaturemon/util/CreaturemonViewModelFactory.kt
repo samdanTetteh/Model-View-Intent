@@ -3,6 +3,8 @@ package com.raywenderlich.android.creaturemon.util
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.raywenderlich.android.creaturemon.addcreature.AddCreatureProcessorHolder
+import com.raywenderlich.android.creaturemon.addcreature.AddCreatureViewModel
 import com.raywenderlich.android.creaturemon.allcreatures.AllCreaturesProcessorHolder
 import com.raywenderlich.android.creaturemon.allcreatures.AllCreaturesViewModel
 import com.raywenderlich.android.creaturemon.app.Injection
@@ -20,6 +22,16 @@ class CreaturemonViewModelFactory private constructor(
                             Injection.providerCreatureRepository(appContext),
                             Injection.providerSchedulerProvider())
                     ) as T
+        }
+
+        if (modelClass == AddCreatureViewModel::class.java) {
+            return AddCreatureViewModel (
+                    AddCreatureProcessorHolder(
+                            Injection.providerCreatureRepository(appContext),
+                            Injection.providerSchedulerProvider(),
+                            Injection.providerCreatureGenerator()
+                    )
+            ) as T
         }
         throw IllegalArgumentException("unknown model class $modelClass")
     }
