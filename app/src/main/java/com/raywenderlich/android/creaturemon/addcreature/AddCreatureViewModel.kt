@@ -17,7 +17,7 @@ class AddCreatureViewModel(
     private val intentsSubject: PublishSubject<AddCreatureIntents> = PublishSubject.create()
     private val stateObservable: Observable<AddCreatureViewState> = compose()
 
-    override fun processIntent(intents: Observable<AddCreatureIntents>) {
+    override fun processIntents(intents: Observable<AddCreatureIntents>) {
         intents.subscribe(intentsSubject)
     }
 

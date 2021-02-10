@@ -27,7 +27,7 @@ class AllCreaturesViewModel (
     }
 
 
-    override fun processIntent(intents: Observable<AllCreaturesIntents>) {
+    override fun processIntents(intents: Observable<AllCreaturesIntents>) {
         intents.subscribe(intentsSubject)
     }
 

@@ -4,7 +4,7 @@ import io.reactivex.Observable
 
 interface MviViewModel<intent: MviIntent, state: MviViewState> {
 
-    fun processIntent(intents: Observable<intent>)
+    fun processIntents(intents: Observable<intent>)
 
     fun states(): Observable<state>
 }

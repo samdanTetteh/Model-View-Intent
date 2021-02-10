@@ -46,7 +46,6 @@ import com.raywenderlich.android.creaturemon.data.model.AttributeValue
 import com.raywenderlich.android.creaturemon.data.model.Avatar
 import com.raywenderlich.android.creaturemon.addcreature.avatars.AvatarAdapter
 import com.raywenderlich.android.creaturemon.addcreature.avatars.AvatarBottomDialogFragment
-import com.raywenderlich.android.creaturemon.allcreatures.AllCreaturesViewModel
 import com.raywenderlich.android.creaturemon.mviBase.MviView
 import com.raywenderlich.android.creaturemon.util.CreaturemonViewModelFactory
 import com.raywenderlich.android.creaturemon.util.visible
@@ -94,7 +93,7 @@ class CreatureActivity : AppCompatActivity(), AvatarAdapter.AvatarListener, MviV
 
     private fun bind() {
         disposables.add(viewModel.states().subscribe(this::render))
-        viewModel.processIntent(intents())
+        viewModel.processIntents(intents())
     }
 
     override fun onStop() {

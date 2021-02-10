@@ -42,7 +42,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.raywenderlich.android.creaturemon.R
 import com.raywenderlich.android.creaturemon.addcreature.CreatureActivity
 import com.raywenderlich.android.creaturemon.mviBase.MviView
-import com.raywenderlich.android.creaturemon.mviBase.MviViewState
 import com.raywenderlich.android.creaturemon.util.CreaturemonViewModelFactory
 import com.raywenderlich.android.creaturemon.util.visible
 import io.reactivex.Observable
@@ -90,7 +89,7 @@ class AllCreaturesActivity : AppCompatActivity(), MviView<AllCreaturesIntents, A
 
   private fun bind() {
     disposables.add(viewModel.states().subscribe(this::render))
-    viewModel.processIntent(intents())
+    viewModel.processIntents(intents())
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
