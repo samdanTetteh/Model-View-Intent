@@ -17,10 +17,14 @@ of web services here.
 
 ### Features
 <ol>
-<li>Architecture is [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)</li>
-<li>Reactive programming with [RxJava](https://github.com/ReactiveX/RxJava)</li>
-<li>Local database manipulation with [Room](https://developer.android.com/jetpack/androidx/releases/room)</li>
-<li>App lifecycle management with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) </li>
+<li>Architecture is [MVI]
+(https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)</li>
+<li>Reactive programming with [RxJava]
+(https://github.com/ReactiveX/RxJava)</li>
+<li>Local database manipulation with [Room]
+(https://developer.android.com/jetpack/androidx/releases/room)</li>
+<li>App lifecycle management with [ViewModel]
+(https://developer.android.com/topic/libraries/architecture/viewmodel) </li>
 </ol>
 
 ### Screenshots
