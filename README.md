@@ -6,7 +6,7 @@ with this [course](https://www.raywenderlich.com/266607-mvi-on-android) on [rayw
 
 I picked up a starter code from the course which I continued to finish by following the course to implement the MVI
 architecture. Although I can say I understand the general benefits of MVI, I will try my hands on building app from scratch
-with this architecture where I am sure I can better compare MVI with other architectures such as [MVVM]("https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel#:~:text=Model%E2%80%93view%E2%80%93viewmodel%20(MVVM,is%20not%20dependent%20on%20any").
+with this architecture where I am sure I can better compare MVI with other architectures such as [MVVM](https://developer.android.com/jetpack/guide) as recommended by google.
 I will linking the all [here]("") once is its ready. However coming from the MVVM side of things the MVI architecture is little bit of a learning curve for me.
 One fun fact about MVI though is that it is said to be MVP done right.
 
