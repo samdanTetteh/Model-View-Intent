@@ -18,17 +18,14 @@ of web services here.
 ### Features
 
 1. Architecture is [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)</li>
-2. Reactive programming with [RxJava]
-(https://github.com/ReactiveX/RxJava)</li>
-<li>Local database manipulation with [Room]
-(https://developer.android.com/jetpack/androidx/releases/room)</li>
-<li>App lifecycle management with [ViewModel]
-(https://developer.android.com/topic/libraries/architecture/viewmodel)</li>
-
+2. Reactive programming with [RxJava](https://github.com/ReactiveX/RxJava)</li>
+3. Local database manipulation with [Room](https://developer.android.com/jetpack/androidx/releases/room)</li>
+4. App lifecycle management with [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)</li>
 
 ### Screenshots
-![](/images/1.jpg "All Creatures Screen")
-![](/images/2.jpg "Add Creature Screen")
+
+![](/Images/1.jpg "All Creatures Screen")
+![](/Images/2.jpg "Add Creature Screen")
 
 
 
