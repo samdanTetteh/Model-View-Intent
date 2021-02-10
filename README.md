@@ -17,8 +17,7 @@ of web services here.
 
 ### Features
 
-1. Architecture is [MVI]
-(https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)</li>
+1. Architecture is [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)</li>
 2. Reactive programming with [RxJava]
 (https://github.com/ReactiveX/RxJava)</li>
 <li>Local database manipulation with [Room]
