@@ -1,7 +1,7 @@
 # Model-View-Intent
 
 ### Overview
-<p>This was my first attempt at [MVI](https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)
+<p>This was my first attempt at [MVI] (https://www.raywenderlich.com/817602-mvi-architecture-for-android-tutorial-getting-started)
 with this [course](https://www.raywenderlich.com/266607-mvi-on-android) on [raywenderlich](https://www.raywenderlich.com).</p>
 
 <p>
